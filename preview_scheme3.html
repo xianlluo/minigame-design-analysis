@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案3：极简黑金风</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000000;
+            color: #e5e5e5;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            border-radius: 0;
+            overflow: hidden;
+            border: 1px solid #d4af37;
+        }
+        header {
+            background: #000000;
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+        h1 {
+            color: #ffd700;
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1em;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .content {
+            padding: 50px 40px;
+        }
+        .module {
+            background: #1a1a1a;
+            border-radius: 0;
+            padding: 40px;
+            margin-bottom: 50px;
+            border-left: 4px solid #d4af37;
+        }
+        .module-title {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: #000000;
+        }
+        th {
+            background: #1a1a1a;
+            color: #ffd700;
+            padding: 20px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 1.05em;
+            border-bottom: 2px solid #d4af37;
+            letter-spacing: 1px;
+        }
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #333333;
+            color: #b8b8b8;
+            line-height: 1.9;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .example-text {
+            color: #888888;
+            font-size: 0.95em;
+            margin-top: 25px;
+            padding: 15px 20px;
+            background: #000000;
+            border-left: 2px solid #d4af37;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .image-item {
+            background: #000000;
+            border-radius: 0;
+            padding: 8px;
+            border: 1px solid #333333;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .image-item:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        .image-placeholder {
+            background: #1a1a1a;
+            height: 160px;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+            margin: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>小游戏设计分析总结</h1>
+            <div class="subtitle">参考来源：微信&抖音小游戏人气榜Top10、收入榜Top10</div>
+        </header>
+        
+        <div class="content">
+            <div class="module">
+                <div class="module-title">首页大厅</div>
+                <table>
+                    <tr>
+                        <th>布局特点</th>
+                        <th>视觉风格</th>
+                        <th>核心体验</th>
+                    </tr>
+                    <tr>
+                        <td>中心底部为主玩法入口，左右设置社交功能；活跃活动集中首页左侧；商业化活动集中首页右侧</td>
+                        <td>高饱和度配色、层级清晰、主功能突出、限时+进度闪烁提醒、红点标签强提示</td>
+                        <td>一键开始，路径短、1次点击可达重要功能、登录奖励必先弹窗</td>
+                    </tr>
+                </table>
+                <div class="example-text">示例游戏：羊了个羊、抓大鹅</div>
+                <div class="image-grid">
+                    <div class="image-item"><div class="image-placeholder">SAMPLE IMAGE 01</div></div>
+                    <div class="image-item"><div class="image-placeholder">SAMPLE IMAGE 02</div></div>
+                    <div class="image-item"><div class="image-placeholder">SAMPLE IMAGE 03</div></div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="module">
+                <div class="module-title">商店模块</div>
+                <table>
+                    <tr>
+                        <th>商品展示</th>
+                        <th>折扣策略</th>
+                        <th>付费档位</th>
+                    </tr>
+                    <tr>
+                        <td>卡片式布局、原价+折扣价对比、"超值""热卖"角标引导、倒计时营造紧迫感</td>
+                        <td>首充1元专享1000倍返利、连续登录折扣礼包、双倍充值、VIP特权</td>
+                        <td>100元内居多、首充1元、6元档位拉渗透</td>
+                    </tr>
+                </table>
+                <div class="example-text">示例游戏：羊了个羊、QQ农场、天天台球</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

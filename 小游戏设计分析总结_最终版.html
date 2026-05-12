@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小游戏设计分析总结</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #e5e5e5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: #000000;
+        }
+
+        header {
+            background: #000000;
+            padding: 30px 50px;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 300;
+            color: #ffd700;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: #888888;
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 25px 50px;
+        }
+
+        .module {
+            margin-bottom: 30px;
+            padding: 20px 15px;
+            background: #000000;
+            border-left: 3px solid #d4af37;
+            page-break-inside: avoid;
+        }
+
+        .module-title {
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .module-content {
+            display: block;
+        }
+
+        .module-left {
+            margin-bottom: 15px;
+        }
+
+        .module-right {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            background: #000000;
+            border: 1px solid #333333;
+        }
+
+        th {
+            background: #1a1a1a;
+            color: #ffd700;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 0.85em;
+            border-bottom: 2px solid #d4af37;
+            letter-spacing: 1px;
+            vertical-align: top;
+        }
+
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #333333;
+            color: #b8b8b8;
+            line-height: 1.5;
+            vertical-align: top;
+            font-size: 0.8em;
+        }
+
+        td ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        td li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 5px;
+        }
+
+        td li:before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        td {
+            counter-reset: item;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #1a1a1a;
+            color: #e5e5e5;
+        }
+
+        .example-section {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .example-title {
+            color: #d4af37;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .example-text {
+            color: #888888;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: #000000;
+            border-left: 2px solid #d4af37;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-top: 0;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .image-item {
+            background: #000000;
+            padding: 8px;
+            border: 1px solid #333333;
+            transition: all 0.3s;
+            flex: 0 0 auto;
+        }
+
+        .image-item:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .image-item img {
+            display: block;
+            height: 495px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #000000;
+            padding: 20px;
+            text-align: center;
+            color: #666666;
+            border-top: 2px solid #d4af37;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 1400px) {
+            .image-item img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>小游戏设计分析总结</h1>
+            <div class="subtitle">参考来源：微信&抖音小游戏人气榜TOP10、收入榜TOP10</div>
+        </header>
+        
+        <div class="content">
+            <!-- 首页大厅模块 -->
+            <div class="module">
+                <div class="module-title">首页大厅</div>
+                
+                <div class="module-content">
+                    <div class="module-left">
+                        <table>
+                            <tr>
+                                <th style="width: 33%;">布局特点</th>
+                                <th style="width: 33%;">视觉风格</th>
+                                <th style="width: 34%;">核心体验</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>中心底部为主玩法入口，左右设置社交功能</li>
+                                        <li>活跃活动集中首页左侧</li>
+                                        <li>商业化活动集中首页右侧</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>高饱和度配色</li>
+                                        <li>层级清晰、主功能突出</li>
+                                        <li>限时+进度闪烁提醒</li>
+                                        <li>红点标签强提示</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>一键开始，路径短</li>
+                                        <li>1次点击可达重要功能</li>
+                                        <li>登录奖励必先弹窗</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="module-right">
+                        <div class="example-section">
+                            <div class="example-text">示例游戏：羊了个羊、抓大鹅</div>
+                            <div class="image-grid">
+                                <div class="image-item">
+                                    <img src="extracted_images/image1.png" alt="首页示例">
+                                </div>
+                                <div class="image-item">
+                                    <img src="extracted_images/image2.png" alt="首页示例">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 商店模块 -->
+            <div class="module">
+                <div class="module-title">商店模块</div>
+                
+                <div class="module-content">
+                    <div class="module-left">
+                        <table>
+                            <tr>
+                                <th style="width: 33%;">商品展示</th>
+                                <th style="width: 33%;">折扣策略</th>
+                                <th style="width: 34%;">付费档位</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>卡片式布局</li>
+                                        <li>原价 + 折扣价对比</li>
+                                        <li>"超值""热卖"角标引导</li>
+                                        <li>倒计时营造紧迫感</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>首充1元专享1000倍返利</li>
+                                        <li>连续登录折扣礼包</li>
+                                        <li>双倍充值</li>
+                                        <li>VIP特权：包月会员专属福利+折扣（常驻8折-9折）</li>
+                                        <li>每日/每周限购1次，数量稀缺性刺激</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>100元内居多</li>
+                                        <li>首充1元、6元档位拉渗透</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="module-right">
+                        <div class="example-section">
+                            <div class="example-text">示例游戏：羊了个羊、QQ农场、天天台球</div>
+                            <div class="image-grid">
+                                <div class="image-item">
+                                    <img src="extracted_images/image3.png" alt="商店示例">
+                                </div>
+                                <div class="image-item">
+                                    <img src="extracted_images/image4.jpg" alt="商店示例">
+                                </div>
+                                <div class="image-item">
+                                    <img src="extracted_images/image5.png" alt="商店示例">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 分享模块 -->
+            <div class="module">
+                <div class="module-title">分享模块</div>
+                
+                <div class="module-content">
+                    <div class="module-left">
+                        <table>
+                            <tr>
+                                <th style="width: 50%;">分享触发</th>
+                                <th style="width: 50%;">奖励机制</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>首页常驻分享按钮</li>
+                                        <li>游戏结束弹窗引导</li>
+                                        <li>复活续关时分享奖励</li>
+                                        <li>任务系统分享任务</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>分享即得：金币、体力、道具（即时反馈）</li>
+                                        <li>好友助力：阶梯式成功邀请好友，获得奖励</li>
+                                        <li>排行榜炫耀：分享战绩到群，好友可挑战</li>
+                                        <li>限时加倍：活动期间分享奖励×2</li>
+                                        <li>每日上限：每天前3次分享必得奖励</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="module-right">
+                        <div class="example-section">
+                            <div class="example-text">示例游戏：QQ农场、抓大鹅</div>
+                            <div class="image-grid">
+                                <div class="image-item">
+                                    <img src="extracted_images/image6.png" alt="分享示例">
+                                </div>
+                                <div class="image-item">
+                                    <img src="extracted_images/image7.jpg" alt="分享示例">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- 签到模块 -->
+            <div class="module">
+                <div class="module-title">签到模块</div>
+                
+                <div class="module-content">
+                    <div class="module-left">
+                        <table>
+                            <tr>
+                                <th style="width: 33%;">每日签到</th>
+                                <th style="width: 33%;">7日签到</th>
+                                <th style="width: 34%;">月签到</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>最常见周期</li>
+                                        <li>仅展示当日奖励，进入游戏必弹窗，先引导玩家领取</li>
+                                        <li>搭配其他活跃任务</li>
+                                        <li>看广告奖励2倍，引导玩家看广告获得收益</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>最常见周期</li>
+                                        <li>不强制连续签到，仅计算总签到时间</li>
+                                        <li>第7天奖励为前6天总和的2-3倍</li>
+                                        <li>部分游戏搭配其他活跃任务</li>
+                                        <li>看广告奖励2倍，引导玩家看广告获得收益</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>常见于数值类游戏，休闲游戏较少</li>
+                                        <li>按照自然月计算较多，会配以补签机制</li>
+                                        <li>补签机会通过广告/付费/VIP特权获得</li>
+                                        <li>关键节点第3、7、15、30天设置里程碑超级大奖（稀有角色/皮肤）</li>
+                                        <li>月签到也会结合BP小额付费，支持一键领取</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="module-right">
+                        <div class="example-section">
+                            <div class="example-text">示例游戏：聪明开局吧、密室出逃、眼都找瞎了、天天台球、箭头会拐弯</div>
+                            <div class="image-grid" style="flex-direction: row; gap: 8px; flex-wrap: nowrap;">
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image8.jpg" alt="日签到示例" style="height: 495px;">
+                                </div>
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image9.jpg" alt="日签到示例" style="height: 495px;">
+                                </div>
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image10.jpg" alt="周签到示例" style="height: 495px;">
+                                </div>
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image11.jpg" alt="周签到示例" style="height: 495px;">
+                                </div>
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image12.png" alt="月签到示例" style="height: 495px;">
+                                </div>
+                                <div class="image-item" style="padding: 5px;">
+                                    <img src="extracted_images/image13.jpg" alt="月签到示例" style="height: 495px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>小游戏设计分析总结 © 2026</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">数据来源：微信&抖音小游戏人气榜Top10、收入榜Top10</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -285,21 +285,26 @@
                 font-size: 0.95em;
             }
 
-            /* 图片网格移动端优化 */
+            /* 图片网格移动端优化 - 每行2张 */
             .image-grid {
-                flex-direction: column;
-                gap: 10px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: space-between;
             }
 
             .image-item {
-                width: 100%;
-                padding: 5px;
+                width: calc(50% - 4px);
+                padding: 4px;
+                flex: 0 0 calc(50% - 4px);
             }
 
             .image-item img {
                 width: 100%;
                 height: auto;
-                max-height: none;
+                aspect-ratio: 9/16;
+                object-fit: cover;
             }
 
             .example-text {

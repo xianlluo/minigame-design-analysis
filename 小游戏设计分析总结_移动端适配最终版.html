@@ -2,11 +2,6 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小游戏设计分析总结</title>
     <style>
@@ -285,26 +280,21 @@
                 font-size: 0.95em;
             }
 
-            /* 图片网格移动端优化 - 每行2张 */
+            /* 图片网格移动端优化 */
             .image-grid {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 8px;
-                justify-content: space-between;
+                flex-direction: column;
+                gap: 10px;
             }
 
             .image-item {
-                width: calc(50% - 4px);
-                padding: 4px;
-                flex: 0 0 calc(50% - 4px);
+                width: 100%;
+                padding: 5px;
             }
 
             .image-item img {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 9/16;
-                object-fit: cover;
+                max-height: none;
             }
 
             .example-text {

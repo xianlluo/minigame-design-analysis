@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案2：游戏活力风</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+            color: #fafafa;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(249, 115, 22, 0.3);
+            border: 2px solid rgba(249, 115, 22, 0.3);
+        }
+        header {
+            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+            padding: 50px 40px;
+            text-align: center;
+            border-bottom: 3px solid #f97316;
+            position: relative;
+        }
+        h1 {
+            color: #fbbf24;
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .subtitle {
+            color: #fef3c7;
+            font-size: 1.1em;
+        }
+        .content {
+            padding: 40px;
+        }
+        .module {
+            background: linear-gradient(135deg, rgba(91, 33, 182, 0.2) 0%, rgba(124, 58, 237, 0.1) 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.2);
+            position: relative;
+        }
+        .module::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #f97316, #fbbf24, #5b21b6, #f97316);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .module:hover::before {
+            opacity: 0.3;
+        }
+        .module-title {
+            color: #fbbf24;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(249, 115, 22, 0.3);
+        }
+        th {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 1.15em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+            color: #fafafa;
+            line-height: 1.8;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:nth-child(even) {
+            background: rgba(91, 33, 182, 0.15);
+        }
+        .example-text {
+            color: #fef3c7;
+            font-size: 1em;
+            margin-top: 20px;
+            padding: 18px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%);
+            border-left: 4px solid #fbbf24;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .image-item {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 12px;
+            border: 2px solid rgba(249, 115, 22, 0.4);
+            text-align: center;
+            transition: all 0.4s;
+            transform: rotate(-1deg);
+        }
+        .image-item:nth-child(2) {
+            transform: rotate(1deg);
+        }
+        .image-item:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+        .image-item:hover {
+            border-color: #fbbf24;
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+        }
+        .image-placeholder {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+            height: 180px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fbbf24;
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 小游戏设计分析总结 🎮</h1>
+            <div class="subtitle">参考来源：微信&抖音小游戏人气榜Top10、收入榜Top10</div>
+        </header>
+        
+        <div class="content">
+            <div class="module">
+                <div class="module-title">🏠 首页大厅</div>
+                <table>
+                    <tr>
+                        <th>布局特点</th>
+                        <th>视觉风格</th>
+                        <th>核心体验</th>
+                    </tr>
+                    <tr>
+                        <td>中心底部为主玩法入口，左右设置社交功能；活跃活动集中首页左侧；商业化活动集中首页右侧</td>
+                        <td>高饱和度配色、层级清晰、主功能突出、限时+进度闪烁提醒、红点标签强提示</td>
+                        <td>一键开始，路径短、1次点击可达重要功能、登录奖励必先弹窗</td>
+                    </tr>
+                </table>
+                <div class="example-text">⭐ 示例游戏：羊了个羊、抓大鹅</div>
+                <div class="image-grid">
+                    <div class="image-item"><div class="image-placeholder">示例图片1</div></div>
+                    <div class="image-item"><div class="image-placeholder">示例图片2</div></div>
+                    <div class="image-item"><div class="image-placeholder">示例图片3</div></div>
+                </div>
+            </div>
+
+            <div class="module">
+                <div class="module-title">💰 商店模块</div>
+                <table>
+                    <tr>
+                        <th>商品展示</th>
+                        <th>折扣策略</th>
+                        <th>付费档位</th>
+                    </tr>
+                    <tr>
+                        <td>卡片式布局、原价+折扣价对比、"超值""热卖"角标引导、倒计时营造紧迫感</td>
+                        <td>首充1元专享1000倍返利、连续登录折扣礼包、双倍充值、VIP特权</td>
+                        <td>100元内居多、首充1元、6元档位拉渗透</td>
+                    </tr>
+                </table>
+                <div class="example-text">⭐ 示例游戏：羊了个羊、QQ农场、天天台球</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

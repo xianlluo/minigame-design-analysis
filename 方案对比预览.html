@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配色方案对比 - 请选择您喜欢的方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f5f5;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            padding: 40px 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .schemes-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+        .scheme-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        .scheme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        .scheme-preview {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 3px solid #e0e0e0;
+        }
+        .scheme-info {
+            padding: 30px;
+        }
+        .scheme-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .scheme-colors {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .color-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        .scheme-features {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .scheme-features li {
+            margin-bottom: 8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .badge-pro {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        .badge-fun {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+        .badge-luxury {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+        
+        /* 方案1配色 */
+        .scheme1 .color-dot:nth-child(1) { background: #1a2332; }
+        .scheme1 .color-dot:nth-child(2) { background: #2563eb; }
+        .scheme1 .color-dot:nth-child(3) { background: #06b6d4; }
+        .scheme1 .color-dot:nth-child(4) { background: #f8fafc; }
+        
+        /* 方案2配色 */
+        .scheme2 .color-dot:nth-child(1) { background: #5b21b6; }
+        .scheme2 .color-dot:nth-child(2) { background: #f97316; }
+        .scheme2 .color-dot:nth-child(3) { background: #fbbf24; }
+        .scheme2 .color-dot:nth-child(4) { background: #fafafa; }
+        
+        /* 方案3配色 */
+        .scheme3 .color-dot:nth-child(1) { background: #000000; }
+        .scheme3 .color-dot:nth-child(2) { background: #d4af37; }
+        .scheme3 .color-dot:nth-child(3) { background: #ffd700; }
+        .scheme3 .color-dot:nth-child(4) { background: #e5e5e5; }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #999;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 配色与排版方案对比</h1>
+        <p>请选择您喜欢的方案，或提出调整建议</p>
+    </div>
+    
+    <div class="schemes-container">
+        <!-- 方案1 -->
+        <div class="scheme-card scheme1">
+            <img src="方案1_科技商务风.png" alt="方案1预览" class="scheme-preview">
+            <div class="scheme-info">
+                <div class="scheme-title">方案1：科技商务风</div>
+                <div class="scheme-colors">
+                    <div class="color-dot" title="深蓝 #1a2332"></div>
+                    <div class="color-dot" title="科技蓝 #2563eb"></div>
+                    <div class="color-dot" title="亮青 #06b6d4"></div>
+                    <div class="color-dot" title="白色 #f8fafc"></div>
+                </div>
+                <div>
+                    <span class="badge badge-pro">专业</span>
+                    <span class="badge badge-pro">商务</span>
+                    <span class="badge badge-pro">现代</span>
+                </div>
+                <ul class="scheme-features">
+                    <li>✓ 深蓝色渐变背景，科技感十足</li>
+                    <li>✓ 卡片式布局，层次分明</li>
+                    <li>✓ 蓝色斑马纹表格，易读性强</li>
+                    <li>✓ 悬浮动效，交互友好</li>
+                    <li>✓ 适合商业汇报、专业分析</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 方案2 -->
+        <div class="scheme-card scheme2">
+            <img src="方案2_游戏活力风.png" alt="方案2预览" class="scheme-preview">
+            <div class="scheme-info">
+                <div class="scheme-title">方案2：游戏活力风</div>
+                <div class="scheme-colors">
+                    <div class="color-dot" title="深紫 #5b21b6"></div>
+                    <div class="color-dot" title="橙红 #f97316"></div>
+                    <div class="color-dot" title="亮黄 #fbbf24"></div>
+                    <div class="color-dot" title="白色 #fafafa"></div>
+                </div>
+                <div>
+                    <span class="badge badge-fun">活力</span>
+                    <span class="badge badge-fun">游戏</span>
+                    <span class="badge badge-fun">创意</span>
+                </div>
+                <ul class="scheme-features">
+                    <li>✓ 黑紫渐变+霓虹配色，电竞风格</li>
+                    <li>✓ 发光效果标题，视觉冲击力强</li>
+                    <li>✓ 倾斜图片展示，动感十足</li>
+                    <li>✓ 渐变边框+彩色按钮</li>
+                    <li>✓ 适合游戏行业、创意展示</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 方案3 -->
+        <div class="scheme-card scheme3">
+            <img src="方案3_极简黑金风.png" alt="方案3预览" class="scheme-preview">
+            <div class="scheme-info">
+                <div class="scheme-title">方案3：极简黑金风</div>
+                <div class="scheme-colors">
+                    <div class="color-dot" title="纯黑 #000000"></div>
+                    <div class="color-dot" title="金色 #d4af37"></div>
+                    <div class="color-dot" title="亮金 #ffd700"></div>
+                    <div class="color-dot" title="浅灰 #e5e5e5"></div>
+                </div>
+                <div>
+                    <span class="badge badge-luxury">奢华</span>
+                    <span class="badge badge-luxury">极简</span>
+                    <span class="badge badge-luxury">高端</span>
+                </div>
+                <ul class="scheme-features">
+                    <li>✓ 纯黑背景+金色强调，奢华质感</li>
+                    <li>✓ 极简扁平设计，去繁从简</li>
+                    <li>✓ 大写字母+宽字距，高级感</li>
+                    <li>✓ 金色线条点缀，精致典雅</li>
+                    <li>✓ 适合高端展示、对外宣讲</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>💡 您也可以提出具体的配色或排版调整建议</p>
+        <p style="margin-top: 10px;">请回复：<strong>方案1</strong> / <strong>方案2</strong> / <strong>方案3</strong></p>
+    </div>
+</body>
+</html>
