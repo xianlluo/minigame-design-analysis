@@ -289,9 +289,9 @@
             .image-grid {
                 display: flex;
                 flex-direction: row;
-                flex-wrap: wrap;
+                flex-wrap: wrap !important;
                 gap: 8px;
-                justify-content: space-between;
+                justify-content: flex-start;
             }
 
             .image-item {
@@ -303,8 +303,7 @@
             .image-item img {
                 width: 100%;
                 height: auto;
-                aspect-ratio: 9/16;
-                object-fit: cover;
+                object-fit: contain;
             }
 
             .example-text {
